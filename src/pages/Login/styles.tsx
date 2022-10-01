@@ -27,41 +27,78 @@ font-weight: 700;
 `;
 export const ContainerForm = styled.div`
 width: 100%;
-height: 50%;
+height: 90%;
 display: flex;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
 `;
-export const Form = styled.form`
+export const Form = styled.div`
 width: 50%;
+height:100%;
 display: flex;
 align-items: start;
 justify-content: center;
 flex-direction: column;
 `;
+
+export const ContainerFields = styled.div`
+width: 100%;
+height: 70%;
+display: flex;
+align-items: start;
+justify-content: center;
+flex-direction: column;
+`;
+
 export const Label = styled.label`
 font-weight: 400;
 font-size: 20px;
 line-height: 25px;
 display: flex;
 align-items: center;
-/* color: #466486; */
-text-transform:uppercase;
+color: #466486;
 
 `;
 export const InputForm = styled.input`
- display: block;
-    width: 81%;
-    padding: 0.375rem 0.75rem;
-    font-size: 18px;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+ /* display: block; */
+ width:89%;
+ padding: 0.375rem 0.75rem;
+ font-size: 18px;
+ line-height: 1.5;
+ color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: 5px;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
+export const ContainerButton = styled.div`
+width: 100%;
+height: 70%;
+display: flex;
+align-items: center;
+justify-content: flex-start;
+flex-direction: column;
+`;
+
+export const ButtonForm = styled.button`
+width: 40%;
+height: 35px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+color: #fff;
+background: #000;
+border-radius: 5px;
+font-size:16px;
+font-weight: 600;
+cursor: pointer;
+&&:hover{
+    font-style: italic;
+}
+`;
+
 
 
 

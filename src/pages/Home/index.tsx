@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+
 function Home() {
   const url = '/clients';
+  const history = useHistory();
   const [userList, setuserList] = useState([]);
 
   useEffect(() => {
@@ -16,9 +19,16 @@ function Home() {
     }
     loadData();
   }, []);
+
+  function logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    history.push('/login')
+  }
   return (
     <div>
       Home
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }
