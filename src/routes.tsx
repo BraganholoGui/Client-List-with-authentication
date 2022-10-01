@@ -4,14 +4,29 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import history from './appHistory';
-// import Layout from './components/layout';
 import store from './reducers/configStore';
 
 const AppRoutes = () => {
+  const [url, setUrl] = useState(false);
+
+  async function loadData() {
+    const user = localStorage.getItem("user");
+    if ((user == "null" || !user)) {
+      setUrl(false)
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      return;
+    } 
+  }
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <Provider store={store} data-test="component-app">
       <Router history={history}>
-        {/* <Layout> */}
+        {
+          url ?
         <Switch>
           <Route path="/home">
             <Home />
@@ -21,9 +36,18 @@ const AppRoutes = () => {
             <Login />
           </Route>
 
+          <Route path='/' component={Home} />
+
           <Redirect path="/" to="/home" />
         </Switch>
-        {/* </Layout> */}
+        : 
+        <Switch>
+          <Route path='/' component={Login} />
+
+          {/* <Redirect path="/" to="/login" /> */}
+        </Switch>
+
+        }
       </Router>
     </Provider >
   );
