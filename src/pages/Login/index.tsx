@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import api from '../../services/api';
-function Login() {
-  const url = '/clients';
-  const [plaintiffList, setPlaintiffList] = useState([]);
+import * as S from './styles';
 
-  useEffect(() => {
-    async function loadData() {
-      await api.get(url)
-        .then(async (response:any) => {
-          console.log(response)
-          if (response && response.data) {
-            setPlaintiffList(response.data)
-          }
-        });
-    }
-    loadData();
-  }, []);
+function Login() {
+
+  // useEffect(() => {
+  // }, []);
+
   return (
-    <div>
-      Login
-    </div>
+    <S.ContainerBody>
+      <S.ContainerAll>
+        <S.TitleLogin>
+          Login
+        </S.TitleLogin>
+        <hr style={{ width: '100%' }}></hr>
+        <S.ContainerForm>
+          <S.Form>
+            <S.Label>
+              Nome do usuário
+            </S.Label>
+            <S.InputForm/>  
+          </S.Form>
+        </S.ContainerForm>
+      </S.ContainerAll>
+    </S.ContainerBody>
   );
 }
 

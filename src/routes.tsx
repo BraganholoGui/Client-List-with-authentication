@@ -16,7 +16,9 @@ const AppRoutes = () => {
       localStorage.removeItem("token")
       localStorage.removeItem("user")
       return;
-    } 
+    } else{
+      setUrl(true)
+    }
   }
   useEffect(() => {
     loadData();
@@ -44,7 +46,6 @@ const AppRoutes = () => {
         <Switch>
           <Route path='/' component={Login} />
 
-          {/* <Redirect path="/" to="/login" /> */}
         </Switch>
 
         }
