@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import api from '../../services/api';
 import * as S from './styles'
 import DataTable from "react-data-table-component";
-import { FaPencilAlt } from 'react-icons/fa';
+import { FaPencilAlt, FaSignOutAlt, FaUsers } from 'react-icons/fa';
 import { Modal, ModalBody } from 'reactstrap';
 import EditClient from '../../Modal/EditClient'
 
@@ -101,7 +101,7 @@ function Home() {
     },
     {
       name: "Editar",
-      selector: (row: any) => <S.ButtonEdit><FaPencilAlt onClick={() =>{toggleModal(); setClientSelected(row)}} /></S.ButtonEdit>,
+      selector: (row: any) => <S.ButtonEdit><FaPencilAlt onClick={() => { toggleModal(); setClientSelected(row) }} /></S.ButtonEdit>,
       sortable: true,
       grow: 1,
       wrap: true
@@ -145,11 +145,12 @@ function Home() {
     <S.ContainerHome>
       <S.Header>
         <S.HeaderTitle>
-          Lista de Clientes
+          <FaUsers className='iconTitle' />Lista de Clientes
         </S.HeaderTitle>
-        <button onClick={logout}>Logout</button>
+        <S.HeaderTitle>
+          <S.ButtonForm onClick={logout}>Logout<FaSignOutAlt className='iconButton' /></S.ButtonForm>
+        </S.HeaderTitle>
       </S.Header>
-      
       <S.ContainerTable>
         <DataTable
           columns={columns}
@@ -164,34 +165,29 @@ function Home() {
           paginationIconFirstPage={null}
         />
         <Modal
-        fade
-        centered
-        zIndex='99999'
-        scrollable={true}
-        isOpen={modal}
-        toggle={toggleModal}
-        // contentClassName='contentModal1'
-        // onClosed={() => {
-        //   handlePlaintiffSelect(searchPlaintiff)
-        // }}
-        style={{  borderRadius: '50px' }}
-      >
-        <ModalBody
-        style={{ borderRadius: '0', padding:'0' }}
+          fade
+          centered
+          zIndex='99999'
+          scrollable={true}
+          isOpen={modal}
+          toggle={toggleModal}
+          style={{ borderRadius: '50px' }}
         >
-          <EditClient
-          clientSelected={clientSelected}
-          setModal={setModal}
-          setUserList={setUserList}
-          userList={userList}
-          // setRevenueModal={setRevenueModal}
-          />
-        </ModalBody>
-      </Modal>
+          <ModalBody
+            style={{ borderRadius: '0', padding: '0' }}
+          >
+            <EditClient
+              clientSelected={clientSelected}
+              setModal={setModal}
+              setUserList={setUserList}
+              userList={userList}
+            // setRevenueModal={setRevenueModal}
+            />
+          </ModalBody>
+        </Modal>
       </S.ContainerTable>
-      
     </S.ContainerHome>
-    
+
   );
 }
 

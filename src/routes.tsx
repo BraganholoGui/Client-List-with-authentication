@@ -7,30 +7,10 @@ import history from './appHistory';
 import store from './reducers/configStore';
 
 const AppRoutes = () => {
-  const [url, setUrl] = useState<any | null>(null);
-
-  async function loadData() {
-    const user = localStorage.getItem("user");
-
-    if ((user == "null" || !user)) {
-      setUrl(localStorage.getItem("user"))
-      localStorage.removeItem("token")
-      localStorage.removeItem("user")
-      return;
-    } else {
-      setUrl(true)
-
-    }
-  }
-  useEffect(() => {
-    loadData();
-  }, []);
 
   return (
     <Provider store={store} data-test="component-app">
       <Router history={history}>
-        {/* {
-          url ? */}
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route path="/home">
@@ -45,11 +25,6 @@ const AppRoutes = () => {
 
           <Redirect path="/" to="/home" />
         </Switch>
-        {/* : 
-        <Switch>
-          <Route path='/' component={Login} />
-        </Switch>
-        }  */}
       </Router>
     </Provider >
   );

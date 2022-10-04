@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import api from '../../services/api';
 import * as S from './styles'
 import DataTable from "react-data-table-component";
-import { FaPencilAlt } from 'react-icons/fa';
+import { FaPencilAlt, FaUserAlt } from 'react-icons/fa';
 
 function EditCLient(props: any) {
   const url = '/clients';
@@ -49,7 +49,6 @@ function EditCLient(props: any) {
 
   function updateCLient() {
     localStorage.setItem("clientList", "null")
-
     userList.map((item: any) => {
       if (item.id == clientId) {
         item.name = clientName,
@@ -85,7 +84,7 @@ function EditCLient(props: any) {
     <S.ContainerHome>
       <S.Header>
         <S.HeaderTitle>
-          Cliente
+          <FaUserAlt className='iconTitle'/>Cliente
         </S.HeaderTitle>
       </S.Header>
       <S.ContainerContent>

@@ -14,7 +14,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: flex-start;
-width: 45%;
+min-width: 45%;
 height: 50%;
 border-radius: 20px;
 border: 1px solid #000;
@@ -33,7 +33,7 @@ align-items: flex-start;
 justify-content: center;
 `;
 export const Form = styled.div`
-width: 50%;
+width: 90%;
 height:100%;
 display: flex;
 align-items: start;
@@ -61,7 +61,7 @@ color: #466486;
 `;
 export const InputForm = styled.input`
  /* display: block; */
- width:89%;
+ width:100%;
  padding: 0.375rem 0.75rem;
  font-size: 18px;
  line-height: 1.5;
@@ -83,7 +83,7 @@ margin-top: 5%;
 `;
 
 export const ButtonForm = styled.button`
-width: 40%;
+min-width: 40%;
 height: 35px;
 display: flex;
 align-items: center;

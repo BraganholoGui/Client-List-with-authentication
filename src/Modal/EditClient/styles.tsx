@@ -18,12 +18,16 @@ height:50px;
 border-bottom: 1px solid #000;
 `;
 export const HeaderTitle = styled.div`
+width:100%;
 color: #000;
 font-weight: 700;
 font-size: 20px;
 display: flex;
 align-items: center;
 justify-content: center;
+.iconTitle{
+  margin-right: 3%;
+}
 `;
 export const ContainerContent = styled.div`
 width: 100%;
@@ -68,7 +72,6 @@ color: #466486;
 
 `;
 export const InputForm = styled.input.attrs({ type: 'text' })`
- /* display: block; */
  width:89%;
  padding: 0.375rem 0.75rem;
  font-size: 18px;
@@ -81,7 +84,6 @@ border-radius: 5px;
 transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
 export const InputNumberForm = styled.input.attrs({ type: 'number' })`
- /* display: block; */
  width:89%;
  padding: 0.375rem 0.75rem;
  font-size: 18px;
