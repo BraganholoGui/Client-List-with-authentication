@@ -79,6 +79,7 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 flex-direction: column;
+margin-top: 5%;
 `;
 
 export const ButtonForm = styled.button`

@@ -37,6 +37,7 @@ function Login() {
               localStorage.setItem("user", userName)
               localStorage.setItem("fullUser", JSON.stringify(user))
               localStorage.setItem("clientList", JSON.stringify(response.data))
+              toast('success', 'Bem vindo!');
               history.push('/home')
               document.location.reload()
             } else{
