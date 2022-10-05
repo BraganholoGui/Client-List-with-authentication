@@ -19,11 +19,6 @@ function handleResponse(resp: {status:any, data:any}) {
 
 }
 
-// export function getPermission(url, method){
-
-//   return true;
-// }
-
 export async function get(url:any) {
 
   return await api.get(url, {
@@ -39,32 +34,33 @@ export async function get(url:any) {
       clear();
     });
 }
-
-
-// export function put(url, data, method = 'PUT') {
-
-//   return new Promise(async (resolve, reject) => {
-//     if(!getPermission(url, method)){
-//       reject({
-//         reason:'Você não tem permissão para realizar esta operação, Verifique!'
-//       });
-//       return;
-//     }
-//     try {
-//       api.put(`${url}`, JSON.stringify(data), {
-//         headers: {
-//           authorization: 'Bearer '+ await localStorage.getItem('token')
-//         }
-//       })
-//         .then(response => {
-//           resolve(handleResponse(response));
-//         })
-//         .catch(error => {
-//           reject(error);
-//           // clear()
-//         });
-//     } catch (error) {
-//       reject(error);
-//     }
-//   });
-// }
+  interface Response {
+    data: {
+      user: {
+        name: string;
+      };
+      token: string;
+    };
+  }
+  
+  export function post(text: string, user: {name:string}): Promise<Response> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          data: {
+            token:
+              '91j893h281h9nf98fnf2309jd09jkkd0as98238j9fr8j98f9j8f298r829r-f',
+            user: {
+              name: user.name,
+            },
+          },
+        });
+      }, 2000);
+    });
+  }
+  
+  export const defaults = {
+    headers: {
+      Authorization: '',
+    },
+  };

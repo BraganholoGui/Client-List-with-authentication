@@ -27,7 +27,7 @@ display: flex;
 align-items: center;
 justify-content: flex-start;
 flex-direction: column;
-height:620px;
+height:700px;
 `;
 
 export const ContainerTable = styled.div`

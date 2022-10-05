@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './App.css';
 import AppRoutes from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {AuthProvider} from './contexts/auth';
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -11,7 +12,11 @@ function App() {
     setReady(true)
   }, []);
 
-  return ready ? <AppRoutes /> : <p>teste</p>;
+  return ready ?
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
+    : null;
 }
 
 export default App;

@@ -5,7 +5,7 @@ background-image: linear-gradient(rgb(25, 25, 105), rgba(0, 150, 229, 0.5));
 display: flex;
 align-items: center;
 justify-content: center;
-height:620px;
+height:700px;
 `;
 
 export const ContainerAll = styled.div`

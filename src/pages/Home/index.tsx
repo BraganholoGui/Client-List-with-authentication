@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import api from '../../services/api';
 import * as S from './styles'
 import DataTable from "react-data-table-component";
 import { FaPencilAlt, FaSignOutAlt, FaUsers } from 'react-icons/fa';
 import { Modal, ModalBody } from 'reactstrap';
 import EditClient from '../../Modal/EditClient'
+import { useAuth } from '../../contexts/auth';
 
 function Home() {
-  const url = '/clients';
-  const history = useHistory();
   const [userList, setUserList] = useState([]);
   const [clientSelected, setClientSelected] = useState({});
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal)
+  const { signed, Logout } = useAuth();
 
   const customStyles = {
     headCells: {
@@ -29,7 +26,6 @@ function Home() {
     },
     rows: {
       style: {
-        // width: "100%",
         backgroundColor: '#ffffff',
         fontSize: '15px',
 
@@ -109,37 +105,11 @@ function Home() {
   ];
 
   useEffect(() => {
-    toast('success', 'Bem vindo!');
-    // async function loadData() {
-    //   await api.get(url)
-    //   .then(async (response: any) => {
-    //     if (response && response.data) {
-    //       setUserList(response.data)
-    //     }
-    //   });
-    // }
-    // loadData();
     setUserList(JSON.parse(localStorage.clientList));
   }, []);
 
-  function toast(icon: any, msg: any) {
-    Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 5000,
-      timerProgressBar: true,
-    }).fire({
-      icon: icon,
-      title: msg
-    });
-  }
-
-  function logout() {
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
-    history.push('/login')
-    document.location.reload()
+  async function handleLogout() {
+    Logout();
   }
   return (
     <S.ContainerHome>
@@ -148,7 +118,7 @@ function Home() {
           <FaUsers className='iconTitle' />Lista de Clientes
         </S.HeaderTitle>
         <S.HeaderTitle>
-          <S.ButtonForm onClick={logout}>Logout<FaSignOutAlt className='iconButton' /></S.ButtonForm>
+          <S.ButtonForm onClick={handleLogout}>Logout<FaSignOutAlt className='iconButton' /></S.ButtonForm>
         </S.HeaderTitle>
       </S.Header>
       <S.ContainerTable>
