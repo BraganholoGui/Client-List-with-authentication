@@ -9,6 +9,7 @@ interface AuthContextData {
   user: object | null;
   Login(user: object): Promise<void>;
   Logout(): void;
+  ShowToast(log: any): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -33,20 +34,29 @@ export const AuthProvider = ({ children }: any) => {
         .then(async (res: any) => {
           if (res && res.data) {
             await res.data.map(async (user: any) => {
+              let log = false;
               if (user.name == userLog) {
-                setUser(response.data.user);
+                log = true
+                await setUser(response.data.user);
                 localStorage.setItem("token", response.data.token)
                 localStorage.setItem("user", userLog)
                 localStorage.setItem("fullUser", JSON.stringify(user))
                 localStorage.setItem("clientList", JSON.stringify(res.data))
-                await toast('success', 'Bem vindo!');
-              }else{
-                await toast('error', 'Erro ao realizar login!');
-              }
+              } 
+              ShowToast(log);
+
             })
           }
         });
       actions.defaults.headers.Authorization = `Bearer ${response.data.token}`;
+    }
+  }
+
+  async function ShowToast(log:any) {
+    if(log){
+      await toast('success', 'Bem vindo!');
+    }else{
+      await toast('error', 'Erro ao realizar login!');
     }
   }
 
@@ -69,7 +79,7 @@ export const AuthProvider = ({ children }: any) => {
   }
   return (
     <AuthContext.Provider
-      value={{ signed: Boolean(user), user, Login, Logout }}
+      value={{ signed: Boolean(user), user, Login, Logout, ShowToast }}
     >
       {children}
     </AuthContext.Provider>
