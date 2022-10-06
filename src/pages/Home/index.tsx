@@ -151,7 +151,6 @@ function Home() {
               setModal={setModal}
               setUserList={setUserList}
               userList={userList}
-            // setRevenueModal={setRevenueModal}
             />
           </ModalBody>
         </Modal>

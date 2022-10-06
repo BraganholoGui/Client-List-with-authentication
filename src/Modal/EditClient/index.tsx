@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import api from '../../services/api';
 import * as S from './styles'
-import DataTable from "react-data-table-component";
-import { FaPencilAlt, FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
+import InputMask from 'react-input-mask';
 
 function EditCLient(props: any) {
-  const url = '/clients';
-  const history = useHistory();
   const [clientSelected, setClientSelected] = useState({
     id: '',
     name: '',
@@ -84,7 +80,7 @@ function EditCLient(props: any) {
     <S.ContainerHome>
       <S.Header>
         <S.HeaderTitle>
-          <FaUserAlt className='iconTitle'/>Cliente
+          <FaUserAlt className='iconTitle' />Cliente
         </S.HeaderTitle>
       </S.Header>
       <S.ContainerContent>
@@ -105,12 +101,16 @@ function EditCLient(props: any) {
               <S.Label>
                 Documento
               </S.Label>
-              <S.InputForm
+              <InputMask mask="999.999.999-99"
+                className="formInput"
+                type="text"
+                id="document"
                 value={clientDocument}
                 onChange={(e) => {
                   setClientDocument(e.target.value)
                 }}
-              />
+              >
+              </InputMask>
             </S.ContainerHalf>
           </S.ContainerFull>
           <S.ContainerFull>
@@ -129,12 +129,16 @@ function EditCLient(props: any) {
               <S.Label>
                 Agência
               </S.Label>
-              <S.InputNumberForm
+              <InputMask mask="9999"
+                className="formInput"
+                type="text"
+                id="agency"
                 value={clientAgency}
                 onChange={(e) => {
                   setClientAgency(e.target.value)
                 }}
-              />
+              >
+              </InputMask>
             </S.ContainerHalf>
           </S.ContainerFull>
           <S.ContainerFull>
@@ -142,12 +146,16 @@ function EditCLient(props: any) {
               <S.Label>
                 Conta
               </S.Label>
-              <S.InputForm
+              <InputMask mask="9999999-9"
+                className="formInput"
+                type="text"
+                id="account"
                 value={clientAccount}
                 onChange={(e) => {
                   setClientAccount(e.target.value)
                 }}
-              />
+              >
+              </InputMask>
             </S.ContainerHalf>
           </S.ContainerFull>
           <S.ContainerFull>

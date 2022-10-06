@@ -15,7 +15,6 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<object | null>(null);
-  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const storagedUser = localStorage.getItem('user');
@@ -33,15 +32,16 @@ export const AuthProvider = ({ children }: any) => {
       await api.get('/clients')
         .then(async (res: any) => {
           if (res && res.data) {
-            res.data.map(async (user: any) => {
+            await res.data.map(async (user: any) => {
               if (user.name == userLog) {
                 setUser(response.data.user);
                 localStorage.setItem("token", response.data.token)
                 localStorage.setItem("user", userLog)
                 localStorage.setItem("fullUser", JSON.stringify(user))
                 localStorage.setItem("clientList", JSON.stringify(res.data))
-                setLogin(true)
                 await toast('success', 'Bem vindo!');
+              }else{
+                await toast('error', 'Erro ao realizar login!');
               }
             })
           }

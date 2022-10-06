@@ -1,13 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import api from '../../services/api';
 import * as S from './styles';
-import Swal from 'sweetalert2';
 import { useAuth } from '../../contexts/auth';
-// import AuthContext from '../../contexts/auth';
 
 function Login() {
-  const history = useHistory();
   const [userName, setUserName] = useState('');
   const { signed, Login } = useAuth();
 

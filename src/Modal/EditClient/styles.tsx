@@ -60,6 +60,18 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
+.formInput{
+  width:89%;
+ padding: 0.375rem 0.75rem;
+ font-size: 18px;
+ line-height: 1.5;
+ color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: 5px;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 `;
 
 export const Label = styled.label`
@@ -83,18 +95,7 @@ border: 1px solid #ced4da;
 border-radius: 5px;
 transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
-export const InputNumberForm = styled.input.attrs({ type: 'number' })`
- width:89%;
- padding: 0.375rem 0.75rem;
- font-size: 18px;
- line-height: 1.5;
- color: #495057;
-background-color: #fff;
-background-clip: padding-box;
-border: 1px solid #ced4da;
-border-radius: 5px;
-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-`;
+
 export const ButtonForm = styled.button`
 width: 40%;
 height: 35px;
