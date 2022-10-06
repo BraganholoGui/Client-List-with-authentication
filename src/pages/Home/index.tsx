@@ -62,7 +62,14 @@ function Home() {
     },
     {
       name: "Data",
-      selector: (row: any) => row.id,
+      selector: (row: any) => {
+        const ndate = formatDate(new Date())
+        return (
+          <>
+            {ndate}
+          </>
+        )
+      },
       sortable: true,
       grow: 1,
       wrap: true
@@ -104,8 +111,26 @@ function Home() {
     },
   ];
 
+  const formatDate = (date: any) => {
+    let dateFormated = '';
+    const ndata = ((addZero(date.getDate()))) + "/" + (addZero(date.getMonth() + 1)) + "/" + date.getFullYear();
+    dateFormated = ndata;
+    return dateFormated
+  }
+
+  function addZero(number: number) {
+    if (number <= 9)
+      return "0" + number;
+    else
+      return number;
+  }
+
   useEffect(() => {
-    setUserList(JSON.parse(localStorage.clientList));
+    if (localStorage.clientList) {
+      setUserList(JSON.parse(localStorage.clientList));
+    } else {
+      Logout();
+    }
   }, []);
 
   async function handleLogout() {
