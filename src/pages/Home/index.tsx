@@ -57,7 +57,7 @@ function Home() {
       name: "Nome",
       selector: (row: any) => row.name,
       sortable: true,
-      grow: 1,
+      grow: 2,
       wrap: true
     },
     {
@@ -71,7 +71,7 @@ function Home() {
         )
       },
       sortable: true,
-      grow: 1,
+      grow: 1.3,
       wrap: true
     },
     {
@@ -85,21 +85,21 @@ function Home() {
       name: "Banco",
       selector: (row: any) => row.bank.bankName,
       sortable: true,
-      grow: 2,
+      grow: 1.5,
       wrap: true
     },
     {
       name: "Agência",
       selector: (row: any) => row.bank.agency,
       sortable: true,
-      grow: 1,
+      grow: 1.5,
       wrap: true
     },
     {
       name: "Conta",
       selector: (row: any) => row.bank.account,
       sortable: true,
-      grow: 1,
+      grow: 1.5,
       wrap: true
     },
     {

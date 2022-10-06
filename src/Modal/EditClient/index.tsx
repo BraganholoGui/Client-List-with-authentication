@@ -26,6 +26,7 @@ function EditCLient(props: any) {
   const [clientCode, setClientCode] = useState('');
   const [modal, setModal] = useState(true);
   const [userList, setUserlist] = useState([]);
+  const [cnpj, setCnpj] = useState(false);
 
   useEffect(() => {
     setClientSelected(props.clientSelected)
@@ -101,16 +102,39 @@ function EditCLient(props: any) {
               <S.Label>
                 Documento
               </S.Label>
-              <InputMask mask="999.999.999-99"
-                className="formInput"
-                type="text"
-                id="document"
-                value={clientDocument}
-                onChange={(e) => {
-                  setClientDocument(e.target.value)
-                }}
-              >
-              </InputMask>
+              {
+                cnpj ?
+                  <InputMask mask="99.999.999/9999-99"
+                    className="formInput"
+                    type="text"
+                    id="document"
+                    value={clientDocument}
+                    onChange={(e) => {
+                      setClientDocument(e.target.value)
+                    }}
+                  >
+                  </InputMask>
+                  :
+                  <InputMask mask="999.999.999-99"
+                    className="formInput"
+                    type="text"
+                    id="document"
+                    value={clientDocument}
+                    onChange={(e) => {
+                      setClientDocument(e.target.value)
+                    }}
+                  >
+                  </InputMask>
+              }
+              <S.ContainerCnpj>
+                  <S.Label>Cnpj:</S.Label>
+                  <S.InputCheckboxForm
+                    checked={cnpj}
+                    onChange={() => {
+                      setCnpj(!cnpj)
+                    }}
+                  />
+                </S.ContainerCnpj>
             </S.ContainerHalf>
           </S.ContainerFull>
           <S.ContainerFull>

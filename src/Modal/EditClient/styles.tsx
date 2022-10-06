@@ -74,7 +74,8 @@ transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 `;
 
-export const Label = styled.label`
+export const Label = styled.div`
+width:89%;
 font-weight: 400;
 font-size: 20px;
 line-height: 25px;
@@ -83,7 +84,27 @@ align-items: center;
 color: #466486;
 
 `;
+export const ContainerCnpj = styled.label`
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 35%;
+
+`;
 export const InputForm = styled.input.attrs({ type: 'text' })`
+ width:89%;
+ padding: 0.375rem 0.75rem;
+ font-size: 18px;
+ line-height: 1.5;
+ color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: 5px;
+transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+`;
+
+export const InputCheckboxForm = styled.input.attrs({ type: 'checkbox' })`
  width:89%;
  padding: 0.375rem 0.75rem;
  font-size: 18px;
